@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术博客 - 苏青淮</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 15% 85%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-date {
+            color: #a0a0ff;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .blog-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .blog-excerpt {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .blog-tag {
+            padding: 5px 12px;
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 15px;
+            font-size: 0.8em;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .blog-card h2 {
+                font-size: 1.5em;
+            }
+
+            .blog-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                返回主页
+            </a>
+            <h1>技术博客</h1>
+            <p>分享技术心得与学习经验</p>
+        </div>
+
+        <div class="blog-posts">
+            <article class="blog-card">
+                <div class="blog-date">2024年3月25日</div>
+                <h2>STM32嵌入式开发入门指南</h2>
+                <div class="blog-excerpt">
+                    本文详细介绍了STM32微控制器的基础知识，包括开发环境搭建、GPIO操作、中断处理等核心概念。
+                    适合初学者快速入门嵌入式开发领域...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">嵌入式</span>
+                    <span class="blog-tag">STM32</span>
+                    <span class="blog-tag">C语言</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-date">2024年3月20日</div>
+                <h2>Python在信号处理中的应用</h2>
+                <div class="blog-excerpt">
+                    探索如何使用Python进行数字信号处理，包括FFT变换、滤波器设计、频谱分析等实用技术。
+                    结合NumPy和Matplotlib库，让信号处理变得简单高效...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">Python</span>
+                    <span class="blog-tag">信号处理</span>
+                    <span class="blog-tag">NumPy</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-date">2024年3月15日</div>
+                <h2>机器学习模型优化技巧</h2>
+                <div class="blog-excerpt">
+                    分享在深度学习项目中的模型优化经验，包括数据预处理、超参数调整、模型压缩等实用技巧。
+                    帮助提高模型的准确性和运行效率...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">机器学习</span>
+                    <span class="blog-tag">深度学习</span>
+                    <span class="blog-tag">TensorFlow</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-date">2024年3月10日</div>
+                <h2>前端性能优化实践</h2>
+                <div class="blog-excerpt">
+                    从实际项目出发，总结前端性能优化的最佳实践，包括代码分割、懒加载、缓存策略等。
+                    让你的Web应用加载更快，用户体验更佳...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">前端</span>
+                    <span class="blog-tag">性能优化</span>
+                    <span class="blog-tag">JavaScript</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-date">2024年3月5日</div>
+                <h2>物联网安全最佳实践</h2>
+                <div class="blog-excerpt">
+                    探讨物联网设备的安全性问题，介绍常见的安全威胁和防护措施。
+                    从设备认证到数据加密，全方位保护IoT系统安全...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">物联网</span>
+                    <span class="blog-tag">网络安全</span>
+                    <span class="blog-tag">加密</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-date">2024年2月28日</div>
+                <h2>数据库设计原则与实践</h2>
+                <div class="blog-excerpt">
+                    深入讲解关系型数据库的设计原则，包括范式理论、索引优化、查询性能调优等核心概念。
+                    帮助构建高效可靠的数据库系统...
+                </div>
+                <div class="blog-tags">
+                    <span class="blog-tag">数据库</span>
+                    <span class="blog-tag">MySQL</span>
+                    <span class="blog-tag">设计模式</span>
+                </div>
+                <a href="#" class="read-more">
+                    阅读更多 <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+        </div>
+    </div>
+</body>
+</html>

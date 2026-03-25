@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 苏青淮</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 15% 85%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .resume-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .main-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: fit-content;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #00ff88;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 0.8em;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-title {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .company {
+            color: #a0a0ff;
+            margin-bottom: 10px;
+        }
+
+        .duration {
+            color: #00ff88;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .skill-name {
+            flex: 1;
+        }
+
+        .skill-level {
+            width: 100px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(45deg, #00ff88, #00cc66);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .contact-item i {
+            color: #ffd700;
+            width: 20px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .degree {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .school {
+            color: #a0a0ff;
+            margin-bottom: 5px;
+        }
+
+        .year {
+            color: #00ff88;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .resume-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .main-section,
+            .sidebar {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                返回主页
+            </a>
+            <h1>个人简历</h1>
+            <p>苏青淮 - 电子信息工程专业</p>
+        </div>
+
+        <div class="resume-content">
+            <main class="main-section">
+                <section class="experience">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i>
+                        项目经历
+                    </h2>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">智能机器人控制系统</h3>
+                        <div class="company">个人项目</div>
+                        <div class="duration">2023年9月 - 2024年1月</div>
+                        <div class="description">
+                            开发基于STM32的自主导航机器人系统，实现SLAM建图、路径规划和避障功能。
+                            使用C++进行嵌入式开发，集成ROS系统，提高了机器人的智能化水平。
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">数字信号处理平台</h3>
+                        <div class="company">课程设计</div>
+                        <div class="duration">2023年6月 - 2023年8月</div>
+                        <div class="description">
+                            设计和实现FIR/IIR数字滤波器，开发实时信号分析工具。
+                            使用Python和MATLAB进行算法仿真，掌握了数字信号处理的核心技术。
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">物联网监控系统</h3>
+                        <div class="company">团队项目</div>
+                        <div class="duration">2023年3月 - 2023年6月</div>
+                        <div class="description">
+                            基于ESP32开发智能家居监控系统，实现温湿度监测、远程控制和数据可视化。
+                            负责硬件设计和后端开发，积累了物联网项目的实战经验。
+                        </div>
+                    </div>
+                </section>
+
+                <section class="education">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        教育背景
+                    </h2>
+
+                    <div class="education-item">
+                        <div class="degree">电子信息工程专业</div>
+                        <div class="school">某大学</div>
+                        <div class="year">2021年9月 - 2025年6月</div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <section class="contact">
+                    <h2 class="section-title">
+                        <i class="fas fa-address-card"></i>
+                        联系方式
+                    </h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>suqinghuai@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+86 138-0000-0000</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/suqinghuai</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/suqinghuai</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="skills">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i>
+                        技能专长
+                    </h2>
+
+                    <div class="skill-category">
+                        <h4>编程语言</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C/C++</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>技术栈</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">STM32</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">ROS</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>工具软件</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">MATLAB</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Altium Designer</span>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
